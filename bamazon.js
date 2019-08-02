@@ -23,14 +23,15 @@ connection.connect(function (err) {
 //   console.log("Server listening on: http://localhost:" + PORT);
 // });
 
-function handleRequest(req, res) {
-  res.end("It works");
-}
+// function handleRequest(req, res) {
+//   res.end("It works");
+// }
 
 function createTable() {
   connection.query("Select * from products", function (err, res) {
     if (err) throw err;
     console.table(res);
+    console.log("==================Welcome Customer==================")
     runInquirer();
   });
 }
