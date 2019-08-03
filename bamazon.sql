@@ -1,3 +1,4 @@
+drop database if exists Bamazon;
 create database Bamazon;
 use Bamazon;
 create table products(
@@ -13,8 +14,8 @@ values("watch", "jewelery", 300, 10),
 ("television", "electronics", 500, 2),
 ("shirt", "clothing", 25, 50),
 ("shorts", "clothing", 20, 90),
-("necklace", "jewelery", 100, 30),
+("necklace", "jewelery", 100, 3),
 ("frozen pizza", "food", 20, 100),
 ("gatorade", "food", 2, 500),
 ("earrings", "jewelery", 30, 50),
-("phone", "electronics", 600, 10);
+("phone", "electronics", 600, 1);

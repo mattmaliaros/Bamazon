@@ -49,28 +49,28 @@ function checkQty(name, qty) {
       let totalCost = qty * cost;
       if (qty <= tableQty) {
         updateQty(qty, tableQty, name, totalCost);
-      }
-      else {
+      } else {
         console.log("Insufficient Quantity, please try again");
-      confirm();
+        confirm();
       }
     })
-  }
-  else {
-    
+  } else {
+
   }
 }
+
 function updateQty(qty, tQty, name, cost) {
+  tQty = parseInt(tQty);
+  qty = parseInt(qty);
   let newQty = tQty - qty;
-        console.log("Processing your order");
-        console.log("=============================================");
-        connection.query("Update products set stock_quantity = " + newQty + " where product_name = '" + name + "'", function (err, res)
-        {
-          if (err) throw err;
-          console.log("Product purchase confirmed.");
-          console.log("Total cost of purchase is: $" + cost);
-          confirm();
-        })
+  console.log("Processing your order");
+  console.log("=============================================");
+  connection.query("Update products set stock_quantity = " + newQty + " where product_name = '" + name + "'", function (err, res) {
+    if (err) throw err;
+    console.log("Product purchase confirmed.");
+    console.log("Total cost of purchase is: $" + cost);
+    confirm();
+  })
 }
 
 function runInquirer() {
@@ -91,19 +91,18 @@ function runInquirer() {
       checkQty(responses.askForName, responses.askForQuantity);
     })
 }
-function confirm(){
+
+function confirm() {
   inquirer.prompt([{
     type: "input",
     name: "askForConfirm",
     message: "Would you like to return to the original screen?"
-  }]).then(function (responses){
-    if (responses.askForConfirm.trim().toLowerCase() == "y"){
+  }]).then(function (responses) {
+    if (responses.askForConfirm.trim().toLowerCase() == "y") {
       createTable();
-    }
-    else if (responses.askForConfirm.trim().toLowerCase() == "n"){
+    } else if (responses.askForConfirm.trim().toLowerCase() == "n") {
       process.exit();
-    }
-    else {
+    } else {
       console.log("Incorrect input");
       confirm();
     }
