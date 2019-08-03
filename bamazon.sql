@@ -6,7 +6,8 @@ item_id int(10) not null auto_increment,
 product_name varchar(25),
 dept_name varchar(25),
 price int(10),
-stock_quantity int(10)
+stock_quantity int(10),
+primary key (item_id)
 );
 insert into products(product_name, dept_name, price, stock_quantity)
 values("watch", "jewelery", 300, 10),
